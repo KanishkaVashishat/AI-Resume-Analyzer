@@ -1,18 +1,34 @@
-import { useState } from 'react';
- import Upload from "./components/Upload";
- import Result from "./components/Result";
+import { useState } from "react";
+import Navbar from "./components/Navbar";
+import Upload from "./components/Upload";
+import EmptyState from "./components/EmptyState";
+import Result from "./components/Result";
+import "./styles/App.css";
 
- function App(){
-  const[result,setResult] =useState(null);
-  return(
-    <div>
-      <h1>
-        AI resume analyzer
-      </h1>
-      <Upload setResult={setResult} />
-      {result && <Result result={result}/>}
-    </div>
+function App() {
+  const [result, setResult] = useState(null);
+
+  return (
+    <>
+      <Navbar />
+
+      <div className="main-container">
+
+        <div className="left-panel">
+          <Upload setResult={setResult} />
+        </div>
+
+        <div className="right-panel">
+          {result ? (
+            <Result result={result} />
+          ) : (
+            <EmptyState />
+          )}
+        </div>
+
+      </div>
+    </>
   );
- }
+}
 
- export default App;
+export default App;
