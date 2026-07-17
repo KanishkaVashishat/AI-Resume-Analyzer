@@ -1,0 +1,10 @@
+.skills-container{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:8px;
+
+    margin:15px 0;
+}

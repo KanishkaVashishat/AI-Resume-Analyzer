@@ -1,0 +1,142 @@
+.upload-card{
+    background:#FFFFFF;
+    padding:32px;
+    border-radius:24px;
+    box-shadow:0 10px 30px rgba(15,23,42,0.08);
+    display:flex;
+    flex-direction:column;
+    gap:24px;
+}
+
+.upload-card h2{
+    font-size:28px;
+    font-weight:700;
+    color:#0F172A;
+}
+
+.subtitle{
+    color:#64748B;
+    line-height:1.6;
+    margin-top:-10px;
+}
+
+.upload-box{
+    border:2px dashed #2563EB;
+    border-radius:20px;
+    padding:48px 24px;
+    text-align:center;
+    cursor:pointer;
+    transition:all .3s ease;
+    background:#F8FAFC;
+}
+
+.upload-box:hover{
+    background:#EFF6FF;
+    border-color:#1D4ED8;
+    transform:translateY(-2px);
+}
+
+.upload-icon{
+    font-size:64px;
+    color:#2563EB;
+    margin-bottom:16px;
+}
+
+.upload-box h3{
+    font-size:20px;
+    font-weight:600;
+    color:#0F172A;
+    margin-bottom:8px;
+}
+
+.upload-box p{
+    color:#64748B;
+    font-size:14px;
+}
+
+.selected-file{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    background:#EFF6FF;
+    border:1px solid #BFDBFE;
+    padding:14px 16px;
+    border-radius:14px;
+    color:#1D4ED8;
+    font-weight:600;
+}
+
+.selected-file svg{
+    font-size:22px;
+}
+
+.input-group{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.input-group label{
+    font-size:15px;
+    font-weight:600;
+    color:#0F172A;
+}
+
+.input-group textarea{
+    width:100%;
+    min-height:180px;
+    resize:none;
+    padding:16px;
+    border:1px solid #CBD5E1;
+    border-radius:16px;
+    font-size:15px;
+    line-height:1.6;
+    outline:none;
+    transition:border-color .2s ease, box-shadow .2s ease;
+    font-family:inherit;
+}
+
+.input-group textarea:focus{
+    border-color:#2563EB;
+    box-shadow:0 0 0 4px rgba(37,99,235,0.12);
+}
+
+.upload-card button{
+    width:100%;
+    padding:16px 20px;
+    border:none;
+    border-radius:16px;
+    background:linear-gradient(135deg,#2563EB 0%,#7C3AED 100%);
+    color:white;
+    font-size:16px;
+    font-weight:700;
+    cursor:pointer;
+    transition:transform .2s ease, box-shadow .2s ease, opacity .2s ease;
+}
+
+.upload-card button:hover:not(:disabled){
+    transform:translateY(-2px);
+    box-shadow:0 12px 24px rgba(37,99,235,0.28);
+}
+
+.upload-card button:disabled{
+    opacity:.7;
+    cursor:not-allowed;
+    transform:none;
+    box-shadow:none;
+}
+
+@media (max-width: 768px){
+    .upload-card{
+        padding:24px;
+        border-radius:20px;
+    }
+
+    .upload-box{
+        padding:40px 20px;
+    }
+
+    .upload-icon{
+        font-size:52px;
+    }
+}
