@@ -140,3 +140,48 @@
         font-size:52px;
     }
 }
+.drag-active{
+    border:2px dashed #4f46e5;
+    background:#eef2ff;
+}
+
+.selected-file{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-top:20px;
+    padding:15px;
+    border-radius:10px;
+    background:#f8f9ff;
+    align-items:center;
+    gap:15px;
+}
+
+.selected-file button{
+    border:none;
+    background:none;
+    cursor:pointer;
+    font-size:18px;
+}
+.selected-file button{
+    background: transparent;
+    border: none;
+    color: #555;
+    font-size: 18px;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.selected-file button:hover{
+    color: #ef4444;
+    transform: scale(1.15);
+}
+.selected-file svg{
+    font-size: 32px;
+    color: #e53935;
+}
+.file-status{
+    color:#16a34a;
+    font-weight:600;
+    font-size:14px;
+}

@@ -1,25 +1,49 @@
-import { FaRobot } from "react-icons/fa";
+import {
+  FaRobot,
+  FaCheckCircle,
+  FaSpinner,
+} from "react-icons/fa";
 import "../styles/Loading.css";
 
 function Loading() {
   return (
     <div className="loading-container">
 
-      <div className="spinner"></div>
-
       <FaRobot className="robot-icon" />
 
-      <h2>Analyzing Resume...</h2>
+      <h2>AI is analyzing your resume...</h2>
 
-      <p>
-        Our AI is reviewing your resume and comparing it with the job description.
+      <p className="loading-subtitle">
+        Please wait while we compare your resume with the job description.
       </p>
 
       <div className="loading-steps">
-        <p>📄 Extracting resume content...</p>
-        <p>🧠 Matching skills...</p>
-        <p>📊 Calculating ATS score...</p>
-        <p>💡 Generating suggestions...</p>
+
+        <div className="step completed">
+          <FaCheckCircle />
+          <span>Resume uploaded successfully</span>
+        </div>
+
+        <div className="step completed">
+          <FaCheckCircle />
+          <span>Extracting text from PDF</span>
+        </div>
+
+        <div className="step active">
+          <FaSpinner className="spin" />
+          <span>Matching resume with job description</span>
+        </div>
+
+        <div className="step pending">
+          <span>⏳</span>
+          <span>Calculating ATS Score</span>
+        </div>
+
+        <div className="step pending">
+          <span>⏳</span>
+          <span>Generating AI Suggestions</span>
+        </div>
+
       </div>
 
     </div>

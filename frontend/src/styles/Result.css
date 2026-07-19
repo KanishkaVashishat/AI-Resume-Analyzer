@@ -1,10 +1,71 @@
+.result-container{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:20px;
+
+    padding:10px;
+
+}
+
+.result-card{
+
+    background:white;
+
+    border-radius:18px;
+
+    padding:22px;
+
+    box-shadow:0 8px 25px rgba(0,0,0,.08);
+
+    transition:.3s;
+
+}
+
+.result-card:hover{
+
+    transform:translateY(-4px);
+
+}
+
+.result-card h3{
+
+    color:#2563EB;
+
+    margin-bottom:18px;
+
+}
+
+.result-card p{
+
+    line-height:1.7;
+
+    color:#475569;
+
+}
+
+.result-card ul{
+
+    margin-left:20px;
+
+}
+
+.result-card li{
+
+    margin:12px 0;
+
+    color:#475569;
+
+}
+
 .skills-container{
 
     display:flex;
 
     flex-wrap:wrap;
 
-    gap:8px;
+    gap:10px;
 
-    margin:15px 0;
 }

@@ -1,92 +1,62 @@
 .loading-container{
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-
-    height:100%;
-
-    text-align:center;
-
+    background:#fff;
+    border-radius:20px;
     padding:40px;
-}
-
-.spinner{
-
-    width:70px;
-    height:70px;
-
-    border:6px solid #E2E8F0;
-    border-top:6px solid #2563EB;
-
-    border-radius:50%;
-
-    animation:spin 1s linear infinite;
-
-    margin-bottom:25px;
+    text-align:center;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
 }
 
 .robot-icon{
-
-    font-size:55px;
-
-    color:#2563EB;
-
+    font-size:60px;
+    color:#4F46E5;
     margin-bottom:20px;
 }
 
 .loading-container h2{
-
+    margin-bottom:10px;
     color:#1E293B;
-
-    margin-bottom:12px;
 }
 
-.loading-container>p{
-
+.loading-subtitle{
     color:#64748B;
-
-    max-width:380px;
-
-    line-height:1.6;
-
     margin-bottom:30px;
 }
 
 .loading-steps{
-
-    width:100%;
-
-    max-width:420px;
-
     text-align:left;
-
-    background:#F8FAFC;
-
-    border-radius:15px;
-
-    padding:20px;
-
-    box-shadow:0 5px 15px rgba(0,0,0,.05);
+    margin-top:20px;
 }
 
-.loading-steps p{
-
-    margin:14px 0;
-
-    color:#334155;
-
+.step{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:12px 0;
     font-size:15px;
 }
 
-@keyframes spin{
+.completed{
+    color:#22C55E;
+}
 
+.active{
+    color:#4F46E5;
+    font-weight:600;
+}
+
+.pending{
+    color:#94A3B8;
+}
+
+.spin{
+    animation:spin 1s linear infinite;
+}
+
+@keyframes spin{
     from{
         transform:rotate(0deg);
     }
-
     to{
         transform:rotate(360deg);
     }
-
 }
