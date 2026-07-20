@@ -1,12 +1,5 @@
-# Python
+venv/
 __pycache__/
 *.pyc
-venv/
-
-# Environment variables
 .env
-backend/.env
-
-# Node
-node_modules/
-dist/
+uploads/

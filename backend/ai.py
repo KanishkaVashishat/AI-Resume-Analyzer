@@ -3,57 +3,54 @@ import json
 from dotenv import load_dotenv
 from google import genai
 
+from prompts import ATS_PROMPT
+from logger import logger
+
 load_dotenv()
 
-client = genai.Client(
-    api_key=os.getenv("GEMINI_API_KEY")
-)
+API_KEY = os.getenv("GEMINI_API_KEY")
+
+if not API_KEY:
+    raise ValueError("GEMINI_API_KEY not found in .env")
+
+client = genai.Client(api_key=API_KEY)
+
 
 def analyze_resume(resume_text, job_description):
 
-    prompt = f"""
-You are an expert ATS (Applicant Tracking System) and technical recruiter.
+    prompt = ATS_PROMPT.format(
+        resume=resume_text,
+        job=job_description
+    )
 
-Analyze the following resume against the job description.
-
-Return ONLY valid JSON.
-
-Resume:
-{resume_text}
-
-Job Description:
-{job_description}
-
-Return this JSON format:
-
-{{
-    "summary": "",
-    "ats_score": 0,
-    "skills_found": [],
-    "missing_skills": [],
-    "strengths": [],
-    "weaknesses": [],
-    "suggestions": []
-}}
-"""
+    logger.info("Sending request to Gemini AI...")
 
     response = client.models.generate_content(
         model="gemini-2.5-flash",
         contents=prompt
     )
 
-    print("========== GEMINI RESPONSE ==========")
-    print(repr(response.text))
-    print("=====================================")
+    logger.info("Response received from Gemini")
 
-    clean_text = response.text.strip()
+    clean_text = (
+        response.text.strip()
+        .replace("```json", "")
+        .replace("```", "")
+        .strip()
+    )
 
-    if clean_text.startswith("```json"):
-        clean_text = clean_text.replace("```json", "", 1)
+    try:
+        analysis = json.loads(clean_text)
 
-    if clean_text.endswith("```"):
-        clean_text = clean_text[:-3]
+        logger.info(
+            f"ATS Score: {analysis.get('ats_score')} | "
+            f"Skills Found: {len(analysis.get('skills_found', []))}"
+        )
 
-    clean_text = clean_text.strip()
+        return analysis
 
-    return json.loads(clean_text)
+    except json.JSONDecodeError:
+        logger.error("Gemini returned invalid JSON")
+        logger.error(clean_text)
+
+        raise ValueError("Invalid JSON received from Gemini.")
