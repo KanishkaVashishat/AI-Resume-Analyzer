@@ -185,3 +185,8 @@
     font-weight:600;
     font-size:14px;
 }
+.drag-active{
+    border:2px dashed #2563eb;
+    background:#eff6ff;
+    transform:scale(1.02);
+}

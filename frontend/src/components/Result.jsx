@@ -3,6 +3,7 @@ import SkillBadge from "./SkillBadge";
 import "../styles/Result.css";
 import StatsGrid from "./StatsGrid";
 import DownloadButton from "./DownloadButton";
+import CopyButton from "./CopyButton";
 
 function Result({ result }) {
   return (
@@ -73,6 +74,7 @@ function Result({ result }) {
         </ul>
       </div>
         <DownloadButton />
+        <CopyButton result={result} />
     </div>
   );
 }

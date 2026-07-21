@@ -1,5 +1,6 @@
 import { useState } from "react";
 import API from "../services/api";
+import toast from "react-hot-toast";
 import UploadCard from "./UploadCard";
 
  function Upload({setResult,
@@ -12,11 +13,11 @@ import UploadCard from "./UploadCard";
     e.preventDefault();
 
     if(!file){
-        alert("Please upload a resume!");
+        toast.error("Please upload a resume.");
         return;
     }
     if(!jobDescription.trim()){
-        alert("please enter a job description");
+        toast.error("please enter a job description");
         return;
     }
     const formData = new FormData();
@@ -28,9 +29,10 @@ import UploadCard from "./UploadCard";
 
         const response = await API.post("/upload",formData);
         setResult(response.data);
+        toast.success("Resume analyzed successfully!");
     }catch(error){
         console.error(error);
-        alert("something went wrong")
+        toast.error("Analysis failed!")
     }finally{
         setLoading(false)
     }

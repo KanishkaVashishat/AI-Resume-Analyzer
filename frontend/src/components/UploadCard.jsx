@@ -2,6 +2,8 @@
 import { FaCloudUploadAlt, FaFilePdf } from "react-icons/fa";
 import "../styles/UploadCard.css";
 import { useRef, useState } from "react";
+import toast from "react-hot-toast";
+import { FaTimes } from "react-icons/fa";
 
 function UploadCard({
   file,
@@ -17,12 +19,12 @@ function UploadCard({
   if (!selectedFile) return;
 
   if (selectedFile.type !== "application/pdf") {
-    alert("Please upload only PDF files.");
+    toast.error("Please upload only PDF files.");
     return;
   }
 
   if (selectedFile.size > 5 * 1024 * 1024) {
-    alert("File size should be less than 5MB.");
+    toast.error("File size should be less than 5MB.");
     return;
   }
 
@@ -66,17 +68,22 @@ const handleDragLeave = () => {
 >
         <FaCloudUploadAlt className="upload-icon" />
 
-        <h3>Click to Upload PDF</h3>
+        <h3>Drag & Drop your Resume</h3>
+
+<p>or click to browse</p>
+
+<p>PDF only • Maximum 5MB</p>
 
         <p>Maximum file size: 5MB</p>
 
         <input
-          type="file"
-          accept=".pdf"
-          hidden
-          ref={fileInputRef}
-          onChange={(e) => handleFile(e.target.files[0])}
-        />
+    type="file"
+    accept=".pdf"
+    hidden
+    ref={fileInputRef}
+    disabled={loading}
+    onChange={(e)=>handleFile(e.target.files[0])}
+/>
       </div>
 
      {file && (
@@ -89,11 +96,12 @@ const handleDragLeave = () => {
     </div>
 
     <button
-      type="button"
-      onClick={() => setFile(null)}
-    >
-      ✖
-    </button>
+  type="button"
+  className="remove-file"
+  onClick={() => setFile(null)}
+>
+  <FaTimes />
+</button>
   </div>
 )}
 
