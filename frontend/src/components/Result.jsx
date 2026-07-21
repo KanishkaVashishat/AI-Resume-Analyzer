@@ -2,6 +2,7 @@ import ATSScore from "./ATSScore";
 import SkillBadge from "./SkillBadge";
 import "../styles/Result.css";
 import StatsGrid from "./StatsGrid";
+import DownloadButton from "./DownloadButton";
 
 function Result({ result }) {
   return (
@@ -71,7 +72,7 @@ function Result({ result }) {
           ))}
         </ul>
       </div>
-
+        <DownloadButton />
     </div>
   );
 }
